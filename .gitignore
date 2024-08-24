@@ -1,0 +1,8 @@
+__pycache__/
+
+# output files (e.g., models, tensorboard, ...)
+*.pth
+*events.out.tfevents*
+log.txt
+test_metrics.csv
+test_outputs.npy

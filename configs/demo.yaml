@@ -1,0 +1,94 @@
+seed: 0
+output_dir: ./logs
+exp_name: demo
+resume: null
+start_epoch: 0
+model_name: seresnet34
+device: cuda
+use_amp: true
+
+ddp:
+  world_size: 1
+  rank: -1
+  gpu: 0
+  dist_url: env://
+  dist_backend: nccl
+  distributed: false
+
+model:
+  num_leads: 12
+  num_classes: 2
+
+dataset:
+  filename_col: FILE_NAME
+  fs_col: SAMPLE_RATE
+  label_col:
+  - LABEL_1
+  - LABEL_2
+  label_dtype: float
+  lead: 12lead
+  fs: 250
+  index_dir: ./data/demo
+  ecg_dir: ./data/demo/ecgs
+
+  train_index: index.csv
+  valid_index: index.csv
+  test_index: index.csv
+
+  train_transforms:
+  - random_crop:
+      crop_length: 2250
+  - butter_filter:
+      fs: 250
+      cutoff:
+      - 0.67
+      - 40
+      order: 3
+      btype: bandpass
+  - standardize:
+      axis: [-1, -2]
+  eval_transforms:
+  - n_crop:
+      crop_length: 2250
+      num_segments: 3
+  - butter_filter:
+      fs: 250
+      cutoff:
+      - 0.67
+      - 40
+      order: 3
+      btype: bandpass
+  - standardize:
+      axis: [-1, -2]
+
+dataloader:
+  batch_size: 16
+  num_workers: 8
+  pin_memory: True
+
+train:
+  epochs: 10
+  accum_iter: 1
+  warmup_epochs: 3
+  min_lr: 0
+  blr: 1.0e-3
+  lr: null
+  weight_decay: 0.05
+  dist_eval: false
+  max_norm: null
+  optimizer: adamw
+
+loss:
+  name: bce
+
+metric:
+  task: multilabel
+  compute_on_cpu: true
+  sync_on_compute: false
+  num_labels: 2
+  target_metrics:
+  - AUROC:
+      average: macro
+
+test:
+  target_metric: MultilabelAUROC
