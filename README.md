@@ -53,7 +53,7 @@ bash run.sh \
     --exp_name ${EXPERIMENT_NAME} \
 ```
 
-#### 2) 12-lead model 
+#### 2) Limb lead model 
 ```
 bash run.sh \
     -f ./configs/dyskalemia/seresnet34-limb_lead.yaml \
@@ -62,7 +62,7 @@ bash run.sh \
     --exp_name ${EXPERIMENT_NAME} \
 ```
 
-#### 3) 12-lead model 
+#### 3) Lead I model 
 ```
 bash run.sh \
     -f ./configs/dyskalemia/seresnet34-lead1.yaml \
