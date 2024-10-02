@@ -2,6 +2,8 @@
 
 This is a __re-implemented__ version of the original code of the paper _"Development of deep learning algorithm for detecting dyskalemia based on electrocardiogram"_, licensed for __non-commercial__ use. We have verified that the reported results in the paper are reproducible within this version.
 
+Paper: https://doi.org/10.1038/s41598-024-71562-5
+
 #### 1) Reproduced results on __hyperkalemia__ (K<sup>+</sup> ≥ 5.5 mEq/L) classification
 
 | Lead combinations | AUROC, Internal testing cohort | AUROC, External validation cohort |
