@@ -72,3 +72,29 @@ bash run.sh \
     --output_dir ${OUTPUT_DIRECTORY} \
     --exp_name ${EXPERIMENT_NAME} \
 ```
+
+## Citation
+If you find this work or code is helpful in your research, please cite:
+
+```
+@article{an2024development,
+  title     = {Development of deep learning algorithm for detecting dyskalemia based on electrocardiogram},
+  author    = {An, Jung Nam and
+               Park, Minje and
+               Joo, Sunghoon and
+               Chang, Mineok and
+               Kim, Do Hyoung and
+               Shin, Dong Geum and
+               Na, Yeongyeon and
+               Kim, Jwa-Kyung and
+               Lee, Hyung-Seok and
+               Song, Young Rim and
+               others},
+  journal   = {Scientific Reports},
+  volume    = {14},
+  number    = {1},
+  pages     = {22868},
+  year      = {2024},
+  publisher = {Nature Publishing Group UK London}
+}
+```
